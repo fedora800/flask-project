@@ -2,6 +2,7 @@ import os
 import datetime
 from flask import Flask, render_template
 # using https://www.digitalocean.com/community/tutorials/how-to-use-templates-in-a-flask-application
+# used the redis part from https://www.youtube.com/watch?v=RSIstPUiEjY
 
 # Flask constructor takes the name of current module (__name__) as argument.
 app = Flask(__name__)
@@ -38,4 +39,5 @@ def comments():
 if __name__ == '__main__':
   # run() method of Flask class runs the application on the local development server.
   #app.run(debug=True)   # default port is 5000
-  app.run(host="0.0.0.0", port="8080")
+  app.run(host="0.0.0.0", debug=True)
+  #app.run(host="0.0.0.0", port="8080")
