@@ -10,15 +10,19 @@ app = Flask(__name__)
 #color = os.environ.get('APP_COLOR')
 color = "red"
 current_utc_dt=datetime.datetime.utcnow()
+hits_counter = 0
 
 # The route() function of the Flask class is a decorator which tells the application which URL should call the associated function.
 @app.route('/')
 # ‘/’ URL is bound with hello_world() function.
 def home():
-  print(color, current_utc_dt)
+  global hits_counter
+  hits_counter += 1
+  print(color, current_utc_dt, hits_counter)
   #return render_template("index.html", color=color)
   #return render_template('index.html', utc_dt=datetime.datetime.utcnow())
-  return render_template('index.html', color="red", utc_dt=datetime.datetime.utcnow())
+  #return render_template('index.html', color="red", utc_dt=datetime.datetime.utcnow())
+  return render_template('index.html', color="red", utc_dt=datetime.datetime.utcnow(), hits_counter=str(hits_counter))
   #return render_template('index.html')
 
 @app.route('/about/')
